@@ -9,22 +9,17 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Stats Card
-        uses: lowlighter/metrics@latest
-        with:
-          filename: stats.svg
-          token: ${{ secrets.PAT_1 }}
-          user: ahmedtaha100
-          base: header, activity, community, repositories
-          config_timezone: America/New_York
+      - uses: actions/checkout@v4
 
-      - name: Languages Card
-        uses: lowlighter/metrics@latest
-        with:
-          filename: languages.svg
-          token: ${{ secrets.PAT_1 }}
-          user: ahmedtaha100
-          base: ""
-          plugin_languages: yes
-          plugin_languages_details: percentage
-          config_timezone: America/New_York
+      - name: Generate cards
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.PAT_1 }}" -o stats.svg "https://github-readme-stats-fast.vercel.app/api?username=ahmedtaha100&theme=dark&hide_border=false&include_all_commits=true&count_private=true&rank_icon=percentile"
+          curl -o languages.svg "https://github-readme-stats-fast.vercel.app/api/top-langs/?username=ahmedtaha100&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add stats.svg languages.svg
+          git commit -m "Update stats" || exit 0
+          git push
