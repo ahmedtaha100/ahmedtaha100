@@ -5,6 +5,9 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -13,7 +16,7 @@ jobs:
 
       - name: Generate cards
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.PAT_1 }}" -o stats.svg "https://github-readme-stats-fast.vercel.app/api?username=ahmedtaha100&theme=dark&hide_border=false&include_all_commits=true&count_private=true&rank_icon=percentile"
+          curl -o stats.svg "https://github-readme-stats-fast.vercel.app/api?username=ahmedtaha100&theme=dark&hide_border=false&include_all_commits=true&count_private=true&rank_icon=percentile"
           curl -o languages.svg "https://github-readme-stats-fast.vercel.app/api/top-langs/?username=ahmedtaha100&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact"
 
       - name: Commit
