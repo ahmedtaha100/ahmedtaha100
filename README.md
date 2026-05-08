@@ -3,6 +3,7 @@
 ## Research Publications
 
 - **SpineFairBench: A Counterfactual Benchmark for Auditing Demographic Sensitivity in Spinal Radiology VLM Reports** — Taha, A., Taeha, A., & Ahmadzada, M. (2026). [[Preprint on ResearchGate]](https://www.researchgate.net/publication/404620116_SpineFairBench_A_Counterfactual_Benchmark_for_Auditing_Demographic_Sensitivity_in_Spinal_Radiology_VLM_Reports) [[Code]](https://github.com/ahmedtaha100/SpineFairBench) [[Dataset]](https://huggingface.co/datasets/ahmedtaha100/spinefairbench-artifacts)
+
 - **MedInsider** — *Coming soon.*
 
 ---
